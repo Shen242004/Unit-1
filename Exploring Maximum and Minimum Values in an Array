@@ -1,0 +1,20 @@
+def find_max_min(arr):
+    if len(arr) == 0:
+        return None, None
+
+    max_val = arr[0]
+    min_val = arr[0]
+
+    for num in arr:
+        if num > max_val:
+            max_val = num
+        if num < min_val:
+            min_val = num
+
+    return max_val, min_val
+
+# Test the function
+array = [3, 1, 7, 10, 5]
+max_value, min_value = find_max_min(array)
+print(f"Maximum value: {max_value}")
+print(f"Minimum value: {min_value}")
