@@ -1,0 +1,43 @@
+def total_value(items, values):
+    return sum(values[i] for i in items)
+
+def is_feasible(items, weights, capacity):
+    return sum(weights[i] for i in items) <= capacity
+
+def knapsack(items, weights, values, capacity):
+    n = len(items)
+    max_value = 0
+    optimal_selection = []
+
+    for i in range(1, 2**n):
+        selection = [j for j in range(n) if (i & (1 << j))]
+        
+        if is_feasible(selection, weights, capacity):
+            value = total_value(selection, values)
+            if value > max_value:
+                max_value = value
+                optimal_selection = selection
+
+    return optimal_selection, max_value
+
+# Test Cases
+items1 = 3
+weights1 = [2, 3, 1]
+values1 = [4, 5, 3]
+capacity1 = 4
+
+items2 = 4
+weights2 = [1, 2, 3, 4]
+values2 = [2, 4, 6, 3]
+capacity2 = 6
+
+optimal_selection1, total_value1 = knapsack(range(items1), weights1, values1, capacity1)
+optimal_selection2, total_value2 = knjson(range(items2), weights2, values2, capacity2)
+
+print("Test Case 1:")
+print("Optimal Selection:", optimal_selection1)
+print("Total Value:", total_value1)
+
+print("Test Case 2:")
+print("Optimal Selection:", optimal_selection2)
+print("Total Value:", total_value2)
