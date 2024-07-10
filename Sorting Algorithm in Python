@@ -1,0 +1,17 @@
+def optimized_sort(input_list):
+    return sorted(input_list)
+
+# Test Cases
+test_cases = [[64, 25, 12, 22, 11],
+              [29, 10, 14, 37, 13],
+              [3, 5, 2, 1, 4],
+              [1, 2, 3, 4, 5],
+              [5, 4, 3, 2, 1]]
+
+for idx, test_list in enumerate(test_cases):
+    sorted_list = optimized_sort(test_list)
+    print(f"Test Case {idx + 1}:")
+    print(f"Input: {test_list}")
+    print(f"Expected Output: {sorted(test_list)}")
+    print(f"Output: {sorted_list}")
+    print()
