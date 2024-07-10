@@ -1,0 +1,32 @@
+import itertools
+
+# Define a function to calculate the distance between two cities
+def distance(city1, city2):
+    return ((city1[0] - city2[0])**2 + (city1[1] - city2[1])**2)**0.5
+
+# Implement the TSP function
+def tsp(cities):
+    min_distance = float('inf')
+    shortest_path = None
+
+    for perm in itertools.permutations(cities[1:]):  # Exclude the starting city
+        total_distance = 0
+        path = [cities[0]]  # Starting city
+
+        for i in range(len(perm)):
+            total_distance += distance(perm[i - 1], perm[i])
+            path.append(perm[i])
+
+        total_distance += distance(perm[-1], cities[0])  # Return to starting city
+
+        if total_distance < min_distance:
+            min_distance = total_distance
+            shortest_path = path
+
+    return min_distance, shortest_path
+
+# Example Usage
+cities = [(0, 0), (1, 2), (3, 1), (5, 3)]
+min_dist, optimal_path = tsp(cities)
+print(f"Minimum Distance: {min_dist}")
+print(f"Optimal Path: {optimal_path}")
