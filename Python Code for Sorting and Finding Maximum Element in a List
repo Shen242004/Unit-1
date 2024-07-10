@@ -1,0 +1,15 @@
+def sort_and_find_max(input_list):
+    if not input_list:
+        print("The list is empty.")
+        return None
+
+    sorted_list = sorted(input_list)
+    max_element = sorted_list[-1]
+    
+    return max_element
+
+# Test Cases
+# Case 1: Empty List
+empty_list = []
+result = sort_and_find_max(empty_list)
+print(result)  # Output: The list is empty.
