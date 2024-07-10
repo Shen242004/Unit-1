@@ -1,0 +1,12 @@
+def climb_stairs(n):
+    if n == 1:
+        return 1
+    first, second = 1, 2
+    for _ in range(3, n + 1):
+        first, second = second, first + second
+    return second if n > 1 else first
+
+# Example
+n = 4
+ways_to_climb = climb_stairs(n)
+print(f"Number of distinct ways to climb {n} steps: {ways_to_climb}")
