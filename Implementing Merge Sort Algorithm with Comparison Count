@@ -1,0 +1,35 @@
+def merge_sort(arr):
+    comparisons = 0
+
+    def merge(left, right):
+        nonlocal comparisons
+        merged = []
+        i = j = 0
+
+        while i < len(left) and j < len(right):
+            comparisons += 1
+            if left[i] < right[j]:
+                merged.append(left[i])
+                i += 1
+            else:
+                merged.append(right[j])
+                j += 1
+
+        merged.extend(left[i:])
+        merged.extend(right[j:])
+        return merged
+
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right), comparisons
+
+# Test the Merge Sort algorithm
+arr = [12, 4, 78, 23, 45, 67, 89, 1]
+sorted_arr, comparisons = merge_sort(arr)
+print(f"Sorted Array: {sorted_arr}")
+print(f"Number of Comparisons: {comparisons}")
