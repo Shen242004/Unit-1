@@ -1,0 +1,8 @@
+def find_max_element(input_list):
+    max_element = max(input_list)
+    return max_element
+
+# Test case
+input_list = [1, 2, 3, 4, 5]
+output = find_max_element(input_list)
+print(output)
