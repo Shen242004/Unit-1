@@ -1,0 +1,31 @@
+def findPaths(m, n, N, i, j):
+    def is_valid(x, y):
+        return 0 <= x < m and 0 <= y < n
+
+    memo = {}
+    def dp(x, y, N):
+        if not is_valid(x, y):
+            return 1
+        if N == 0:
+            return 0
+        if (x, y, N) in memo:
+            return memo[(x, y, N)]
+        
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        ways = 0
+        for dx, dy in directions:
+            ways += dp(x + dx, y + dy, N - 1)
+        
+        memo[(x, y, N)] = ways
+        return ways
+
+    return dp(i, j, N)
+
+# Example
+m = 2
+n = 2
+N = 2
+i = 0
+j = 0
+output = findPaths(m, n, N, i, j)
+print(output)  # Output: 6
